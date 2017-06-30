@@ -10,9 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var fullName: UILabel!
+    //@IBOutlet weak var eaglesImg: UIImageView!
+    @IBOutlet weak var renameField: UITextField!
+    let person = Person(first: "John", last: "Hancock")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // model logic in view (data manipulation inside view)
+        //fullName.text = "\(person.firstName) \(person.lastName)"
+        
+        fullName.text = person.fullName
+        
+        //eaglesImg.layer.cornerRadius = 5.0
+        //eaglesImg.clipsToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,5 +33,12 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func renamePressed(_ sender: Any) {
+        
+        if let txt = renameField.text {
+            person.firstName = txt
+            fullName.text = person.fullName
+        }
+    }
 }
 
